@@ -15,9 +15,12 @@ int	ft_nlen(int	n)
 {
 	int	i;
 	
-	if (n < 0)
-	n *=-1;
 	i = 1;
+	if (n < 0)
+	{
+		n *= -1;
+		i++;
+	}
 	while (n >= 10)
 	{
 		n /= 10;
@@ -26,26 +29,39 @@ int	ft_nlen(int	n)
 	return (i);
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 	long	m;
 	int		d;
 	
 	d = ft_nlen(n);
-	str = (char *)malloc(d+1);
+	str = (char *)malloc(d + 1);
+	if (!str)
+		return (NULL);
 	m = n;
-	while (d > 0)
+	if (n < 0)
 	{
-
-		 d--;
+		m = -n;
+		//str[0] = '-';
 	}
-
-
+	str[d] = '\0';
+	while (d--)
+	{
+		str[d] = (m % 10) + 48;
+		m = m/10;
+	}
+	if(n < 0)
+		str [0] = '-';
+	return(str);
 }
 
 int	main(void)
 {
-	printf("%d",ft_nlen(-1234));
+	printf("%s\n",ft_itoa(0));
+	printf("%s\n",ft_itoa(1234));
+	printf("%s\n",ft_itoa(-31123));
+	printf("%s\n",ft_itoa(-10));
+	printf("%s\n",ft_itoa(-1));
 	return (0);
 }
