@@ -11,6 +11,16 @@
 /* ************************************************************************** */
 #include "libft.h"
 
+char	*ft_r_minzero(int n, char *str)
+{
+	free(str);
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (n == 0)
+		return (ft_strdup("0"));
+	return (0);
+}
+
 int	ft_nlen(int n)
 {
 	int	i;
@@ -39,11 +49,11 @@ char	*ft_itoa(int n)
 	str = (char *)malloc(d + 1);
 	if (!str)
 		return (NULL);
+	if (n == 0 || n == -2147483648)
+		return (ft_r_minzero(n, str));
 	m = n;
 	if (n < 0)
-	{
 		m = -n;
-	}
 	str[d] = '\0';
 	while (d--)
 	{
@@ -54,13 +64,3 @@ char	*ft_itoa(int n)
 		str [0] = '-';
 	return (str);
 }
-
-// int	main(void)
-// {
-// 	printf("%s\n",ft_itoa(0));
-// 	printf("%s\n",ft_itoa(1234));
-// 	printf("%s\n",ft_itoa(-31123));
-// 	printf("%s\n",ft_itoa(-10));
-// 	printf("%s\n",ft_itoa(-1));
-// 	return (0);
-// }
