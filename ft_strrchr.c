@@ -13,22 +13,20 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	last;
 	int	i;
-	char	*str;
-	char	*r;
 
-	str = (char *)s;
-	last = -1;
 	i = 0;
-	while(s[i])
+	while (*s)
+		s++;
+	if (c == 0)
+		return ((char *)s);
+	while (s >= 0)
 	{
-		if (s[i] == c)
-			last = s[i];
-		i++;
+		if (*s == c)
+			return ((char *)s);
+		s--;
 	}
-	if(last == -1)
-		return (NULL);
-	r = &str[i];
-	return (r);
+	return (NULL);
 }
+
+
