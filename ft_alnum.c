@@ -9,25 +9,8 @@
 /*   Updated: 2024/09/26 19:16:10 by rcarpio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_isalpha(int c)
-{
-	int	r;
 
-	r = 1;
-	if (!(c >= 65 && c <= 90) && !(c >= 97 && c <= 122))
-		r = 0;
-	return (r);
-}
-
-int	ft_isdigit(int c)
-{
-	int	r;
-
-	r = 1;
-	if (c < 48 || c > 57)
-		r = 0;
-	return (r);
-}
+#include "libft.h"
 
 int	ft_isalnum(int c)
 {
