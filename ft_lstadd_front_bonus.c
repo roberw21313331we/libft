@@ -9,10 +9,13 @@
 /*   Updated: 2024/10/10 20:37:42 by rcarpio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	
+	if (lst && new)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
 }
